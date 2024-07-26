@@ -47,7 +47,7 @@ export class MyComponent {
               alert('button is clicked!');
             }}
           >
-            {this.buttonLabel ?? 'button'}
+            {this.buttonLabel}
           </button>
         </div>
       </div>
