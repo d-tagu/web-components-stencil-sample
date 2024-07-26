@@ -8,6 +8,10 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MyComponent {
         /**
+          * button label
+         */
+        "buttonLabel": string;
+        /**
           * The first name
          */
         "first": string;
@@ -19,9 +23,10 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
-    }
-    interface SampleWebComponents {
-        "name": string;
+        /**
+          * placeholder
+         */
+        "placeholder": string;
     }
 }
 declare global {
@@ -31,19 +36,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLSampleWebComponentsElement extends Components.SampleWebComponents, HTMLStencilElement {
-    }
-    var HTMLSampleWebComponentsElement: {
-        prototype: HTMLSampleWebComponentsElement;
-        new (): HTMLSampleWebComponentsElement;
-    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
-        "sample-web-components": HTMLSampleWebComponentsElement;
     }
 }
 declare namespace LocalJSX {
     interface MyComponent {
+        /**
+          * button label
+         */
+        "buttonLabel"?: string;
         /**
           * The first name
          */
@@ -56,13 +58,13 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
-    }
-    interface SampleWebComponents {
-        "name"?: string;
+        /**
+          * placeholder
+         */
+        "placeholder"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
-        "sample-web-components": SampleWebComponents;
     }
 }
 export { LocalJSX as JSX };
@@ -70,7 +72,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "sample-web-components": LocalJSX.SampleWebComponents & JSXBase.HTMLAttributes<HTMLSampleWebComponentsElement>;
         }
     }
 }
